@@ -6,20 +6,26 @@
 
 
 (function () {
-    // Dominios permitidos
-    const dominiosPermitidos = ['www.elcingles.com', 'www.englishlanguagecenter.com', 'localhost'];
+    const dominiosPermitidos = [
+        'elcingles.com',
+        'selen-programm.github.io/elc-codeassets',
+        'localhost',
+        '127.0.0.1'
+    ];
     const dominioActual = window.location.hostname;
-
-    // Verificar si el dominio actual está autorizado
     const esValido = dominiosPermitidos.some(d => dominioActual.endsWith(d));
 
     if (!esValido) {
-        console.warn('Licencia no válida para este dominio.');
-        return; // Detiene la ejecución por completo
+        console.warn('Licencia no válida para este dominio: ' + dominioActual);
+        return;
+    }
 
-        // 1. Inyectar Estilos CSS
-        const styleTag = document.createElement('style');
-        styleTag.innerHTML = `
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = `
+        /* ... resto de tu código CSS, HTML y JS normal ... */
+    `;
+    // 1. Inyectar Estilos CSS
+    styleTag.innerHTML = `
         .elc-widget-wrapper * {
             box-sizing: border-box;
             margin: 0;
@@ -265,13 +271,13 @@
             .elc-chat-window { width: calc(100vw - 30px); height: 75vh; }
         }
     `;
-        document.head.appendChild(styleTag);
+    document.head.appendChild(styleTag);
 
-        // 2. Inyectar Estructura HTML en el DOM
-        const containerDiv = document.createElement('div');
-        containerDiv.className = 'elc-widget-wrapper';
-        containerDiv.id = 'elcWidget';
-        containerDiv.innerHTML = `
+    // 2. Inyectar Estructura HTML en el DOM
+    const containerDiv = document.createElement('div');
+    containerDiv.className = 'elc-widget-wrapper';
+    containerDiv.id = 'elcWidget';
+    containerDiv.innerHTML = `
         <button class="elc-chat-trigger" id="elcTrigger" aria-label="Abrir Preguntas Frecuentes">
             <span class="elc-chat-badge"></span>
             <svg viewBox="0 0 24 24">
@@ -300,137 +306,136 @@
             </div>
         </div>
     `;
-        document.body.appendChild(containerDiv);
+    document.body.appendChild(containerDiv);
 
-        // 3. Lógica del Bot y Árbol de Preguntas
-        const elcFaqTree = {
-            main: {
-                message: "👋 ¡Hola! Bienvenido a English Language Center. ¿Sobre qué tema te gustaría consultar?",
-                options: [
-                    { label: "⏱️ Tiempos y Edad para aprender", target: "cat_tiempos" },
-                    { label: "🏫 Por qué elegir ELC y Beneficios", target: "cat_elc" },
-                    { label: "💻 Clases Virtuales y Plataforma", target: "cat_virtual" },
-                    { label: "🏢 Instalaciones y Comodidades", target: "q6" }
-                ]
-            },
-            cat_tiempos: {
-                message: "Perfecto. Selecciona la pregunta específica sobre edades o duración del aprendizaje:",
-                options: [
-                    { label: "1. ¿Cuántos años lleva aprender inglés?", target: "q1" },
-                    { label: "2. ¿A qué edad conviene mandar a un niño?", target: "q2" },
-                    { label: "3. ¿Los adultos pueden aprender de cero?", target: "q3" },
-                    { label: "⬅️ Volver al menú principal", target: "main" }
-                ]
-            },
-            cat_elc: {
-                message: "Te contamos lo que nos distingue. ¿Qué consulta deseas hacer?",
-                options: [
-                    { label: "4. ¿Por qué debo elegir ELC para mi hijo/a?", target: "q4" },
-                    { label: "5. ¿Por qué ir a ELC puede ser mejor que otros centros?", target: "q5" },
-                    { label: "⬅️ Volver al menú principal", target: "main" }
-                ]
-            },
-            cat_virtual: {
-                message: "Sobre nuestra modalidad online y herramientas digitales:",
-                options: [
-                    { label: "7. ¿Por qué elegir ELC para aprender virtual?", target: "q7" },
-                    { label: "8. ¿La plataforma virtual es también para clases presenciales?", target: "q8" },
-                    { label: "⬅️ Volver al menú principal", target: "main" }
-                ]
-            },
-            q1: { question: "¿Cuántos años lleva aprender inglés?", answer: "Aprender inglés y dominarlo como una segunda lengua, con el rango de bilingüe, no tiene un plazo exacto...", parent: "cat_tiempos" },
-            q2: { question: "¿A qué edad conviene empezar a mandar a un niño?", answer: "Siempre es buen momento para aprender otro idioma! A más corta edad, incorporan la lengua con mayor naturalidad...", parent: "cat_tiempos" },
-            q3: { question: "¿Los adultos pueden aprender de cero?", answer: "Por supuesto que sí, sólo es cuestión de manejar la ansiedad de ver frutos mágicos...", parent: "cat_tiempos" },
-            q4: { question: "¿Por qué debo elegir ELC para mi hijo/a?", answer: "ELC no sólo les dará el manejo de la lengua inglesa para poder abrir muchas puertas...", parent: "cat_elc" },
-            q5: { question: "¿Por qué ir a ELC puede ser mejor que otros centros?", answer: "Porque el personal docente está sumamente capacitado...", parent: "cat_elc" },
-            q6: { question: "¿Qué comodidades brinda ELC?", answer: "Si se trata de clases presenciales, ELC cuenta con 5 amplias aulas...", parent: "main" },
-            q7: { question: "¿Por qué elegir ELC para aprender inglés de forma virtual?", answer: "La experiencia de enseñar de forma presencial por más de 25 años...", parent: "cat_virtual" },
-            q8: { question: "¿La plataforma virtual es también para los que toman clases presenciales?", answer: "La plataforma está diseñada tanto para quienes tomen el curso 100% virtual...", parent: "cat_virtual" }
-        };
+    // 3. Lógica del Bot y Árbol de Preguntas
+    const elcFaqTree = {
+        main: {
+            message: "👋 ¡Hola! Bienvenido a English Language Center. ¿Sobre qué tema te gustaría consultar?",
+            options: [
+                { label: "⏱️ Tiempos y Edad para aprender", target: "cat_tiempos" },
+                { label: "🏫 Por qué elegir ELC y Beneficios", target: "cat_elc" },
+                { label: "💻 Clases Virtuales y Plataforma", target: "cat_virtual" },
+                { label: "🏢 Instalaciones y Comodidades", target: "q6" }
+            ]
+        },
+        cat_tiempos: {
+            message: "Perfecto. Selecciona la pregunta específica sobre edades o duración del aprendizaje:",
+            options: [
+                { label: "1. ¿Cuántos años lleva aprender inglés?", target: "q1" },
+                { label: "2. ¿A qué edad conviene mandar a un niño?", target: "q2" },
+                { label: "3. ¿Los adultos pueden aprender de cero?", target: "q3" },
+                { label: "⬅️ Volver al menú principal", target: "main" }
+            ]
+        },
+        cat_elc: {
+            message: "Te contamos lo que nos distingue. ¿Qué consulta deseas hacer?",
+            options: [
+                { label: "4. ¿Por qué debo elegir ELC para mi hijo/a?", target: "q4" },
+                { label: "5. ¿Por qué ir a ELC puede ser mejor que otros centros?", target: "q5" },
+                { label: "⬅️ Volver al menú principal", target: "main" }
+            ]
+        },
+        cat_virtual: {
+            message: "Sobre nuestra modalidad online y herramientas digitales:",
+            options: [
+                { label: "7. ¿Por qué elegir ELC para aprender virtual?", target: "q7" },
+                { label: "8. ¿La plataforma virtual es también para clases presenciales?", target: "q8" },
+                { label: "⬅️ Volver al menú principal", target: "main" }
+            ]
+        },
+        q1: { question: "¿Cuántos años lleva aprender inglés?", answer: "Aprender inglés y dominarlo como una segunda lengua, con el rango de bilingüe, no tiene un plazo exacto...", parent: "cat_tiempos" },
+        q2: { question: "¿A qué edad conviene empezar a mandar a un niño?", answer: "Siempre es buen momento para aprender otro idioma! A más corta edad, incorporan la lengua con mayor naturalidad...", parent: "cat_tiempos" },
+        q3: { question: "¿Los adultos pueden aprender de cero?", answer: "Por supuesto que sí, sólo es cuestión de manejar la ansiedad de ver frutos mágicos...", parent: "cat_tiempos" },
+        q4: { question: "¿Por qué debo elegir ELC para mi hijo/a?", answer: "ELC no sólo les dará el manejo de la lengua inglesa para poder abrir muchas puertas...", parent: "cat_elc" },
+        q5: { question: "¿Por qué ir a ELC puede ser mejor que otros centros?", answer: "Porque el personal docente está sumamente capacitado...", parent: "cat_elc" },
+        q6: { question: "¿Qué comodidades brinda ELC?", answer: "Si se trata de clases presenciales, ELC cuenta con 5 amplias aulas...", parent: "main" },
+        q7: { question: "¿Por qué elegir ELC para aprender inglés de forma virtual?", answer: "La experiencia de enseñar de forma presencial por más de 25 años...", parent: "cat_virtual" },
+        q8: { question: "¿La plataforma virtual es también para los que toman clases presenciales?", answer: "La plataforma está diseñada tanto para quienes tomen el curso 100% virtual...", parent: "cat_virtual" }
+    };
 
-        const widgetWrapper = document.getElementById('elcWidget');
-        const triggerBtn = document.getElementById('elcTrigger');
-        const closeBtn = document.getElementById('elcCloseBtn');
-        const chatBody = document.getElementById('elcChatBody');
-        const typingIndicator = document.getElementById('elcTypingIndicator');
-        let isTyping = false;
-        let isInitialized = false;
+    const widgetWrapper = document.getElementById('elcWidget');
+    const triggerBtn = document.getElementById('elcTrigger');
+    const closeBtn = document.getElementById('elcCloseBtn');
+    const chatBody = document.getElementById('elcChatBody');
+    const typingIndicator = document.getElementById('elcTypingIndicator');
+    let isTyping = false;
+    let isInitialized = false;
 
-        function toggleELCChat() {
-            widgetWrapper.classList.toggle('active');
-            if (!isInitialized) {
-                initChat();
-                isInitialized = true;
+    function toggleELCChat() {
+        widgetWrapper.classList.toggle('active');
+        if (!isInitialized) {
+            initChat();
+            isInitialized = true;
+        }
+    }
+
+    triggerBtn.onclick = toggleELCChat;
+    closeBtn.onclick = toggleELCChat;
+
+    function initChat() {
+        chatBody.innerHTML = '';
+        showCategory('main');
+    }
+
+    function showCategory(catKey) {
+        const node = elcFaqTree[catKey];
+        appendMessage(node.message, 'bot');
+        renderOptions(node.options);
+    }
+
+    function handleOptionClick(option) {
+        if (isTyping) return;
+        document.querySelectorAll('#elcChatBody .options-container').forEach(el => el.remove());
+        appendMessage(option.label, 'user');
+
+        isTyping = true;
+        typingIndicator.classList.add('active');
+        scrollToBottom();
+
+        setTimeout(() => {
+            typingIndicator.classList.remove('active');
+            isTyping = false;
+            const targetNode = elcFaqTree[option.target];
+
+            if (targetNode.answer) {
+                appendMessage(targetNode.answer, 'bot');
+                renderOptions([
+                    { label: "↩️ Otras preguntas de este tema", target: targetNode.parent },
+                    { label: "🏠 Volver al Menú Principal", target: "main" }
+                ]);
+            } else {
+                showCategory(option.target);
             }
-        }
-
-        triggerBtn.onclick = toggleELCChat;
-        closeBtn.onclick = toggleELCChat;
-
-        function initChat() {
-            chatBody.innerHTML = '';
-            showCategory('main');
-        }
-
-        function showCategory(catKey) {
-            const node = elcFaqTree[catKey];
-            appendMessage(node.message, 'bot');
-            renderOptions(node.options);
-        }
-
-        function handleOptionClick(option) {
-            if (isTyping) return;
-            document.querySelectorAll('#elcChatBody .options-container').forEach(el => el.remove());
-            appendMessage(option.label, 'user');
-
-            isTyping = true;
-            typingIndicator.classList.add('active');
             scrollToBottom();
+        }, 600);
+    }
 
-            setTimeout(() => {
-                typingIndicator.classList.remove('active');
-                isTyping = false;
-                const targetNode = elcFaqTree[option.target];
+    function renderOptions(optionsList) {
+        const optionsContainer = document.createElement('div');
+        optionsContainer.className = 'options-container';
 
-                if (targetNode.answer) {
-                    appendMessage(targetNode.answer, 'bot');
-                    renderOptions([
-                        { label: "↩️ Otras preguntas de este tema", target: targetNode.parent },
-                        { label: "🏠 Volver al Menú Principal", target: "main" }
-                    ]);
-                } else {
-                    showCategory(option.target);
-                }
-                scrollToBottom();
-            }, 600);
-        }
+        optionsList.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = `<span>${opt.label}</span><span style="font-size: 0.7rem;">➔</span>`;
+            btn.onclick = () => handleOptionClick(opt);
+            optionsContainer.appendChild(btn);
+        });
 
-        function renderOptions(optionsList) {
-            const optionsContainer = document.createElement('div');
-            optionsContainer.className = 'options-container';
+        chatBody.appendChild(optionsContainer);
+        scrollToBottom();
+    }
 
-            optionsList.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerHTML = `<span>${opt.label}</span><span style="font-size: 0.7rem;">➔</span>`;
-                btn.onclick = () => handleOptionClick(opt);
-                optionsContainer.appendChild(btn);
-            });
+    function appendMessage(text, sender) {
+        const bubble = document.createElement('div');
+        bubble.className = `message-bubble ${sender}`;
+        bubble.innerHTML = text;
+        chatBody.appendChild(bubble);
+        scrollToBottom();
+    }
 
-            chatBody.appendChild(optionsContainer);
-            scrollToBottom();
-        }
-
-        function appendMessage(text, sender) {
-            const bubble = document.createElement('div');
-            bubble.className = `message-bubble ${sender}`;
-            bubble.innerHTML = text;
-            chatBody.appendChild(bubble);
-            scrollToBottom();
-        }
-
-        function scrollToBottom() {
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }
+    function scrollToBottom() {
+        chatBody.scrollTop = chatBody.scrollHeight;
     }
 })();
