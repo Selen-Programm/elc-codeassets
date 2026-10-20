@@ -90,3 +90,217 @@
         <div class="elc-spacer"></div>
     </div>
 </div>
+<style>
+    :root {
+        --elc-blue: #1b49bf;
+        --elc-light-blue: #8eb3ed;
+        --elc-bg: #f8fafc;
+        --elc-text-dark: #0f172a;
+        --elc-text-muted: #64748b;
+        --elc-card-bg: rgba(255, 255, 255, 0.92);
+        --elc-radius: 20px;
+    }
+
+    .elc-tour-container {
+        position: relative;
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 40px 20px;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        overflow: hidden;
+    }
+
+    /* SVG de la traza principal */
+    .elc-svg-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* Trazo base claro */
+    .elc-path-bg {
+        stroke: #e2e8f0;
+        stroke-width: 16;
+        /* Línea más gruesa */
+        fill: none;
+        stroke-linecap: round;
+    }
+
+    /* Trazo activo animado */
+    .elc-path-active {
+        stroke: var(--elc-blue);
+        stroke-width: 16;
+        fill: none;
+        stroke-linecap: round;
+    }
+
+    /* Aviones y Pisadas Decorativos */
+    .elc-deco-icon {
+        position: absolute;
+        z-index: 2;
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    .elc-plane-1 {
+        top: 18%;
+        right: 12%;
+        transform: rotate(15deg);
+    }
+
+    .elc-plane-2 {
+        top: 52%;
+        left: 8%;
+        transform: rotate(-25deg);
+    }
+
+    .elc-footprints {
+        top: 78%;
+        right: 15%;
+        transform: rotate(45deg);
+    }
+
+    /* Estaciones / Tarjetas */
+    .elc-station {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        margin-bottom: 140px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .elc-station.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .elc-station.left {
+        flex-direction: row;
+    }
+
+    .elc-station.right {
+        flex-direction: row-reverse;
+    }
+
+    .elc-media-wrapper {
+        position: relative;
+        flex: 1;
+        max-width: 520px;
+    }
+
+    .elc-image {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        border-radius: var(--elc-radius);
+        box-shadow: 0 20px 35px -10px rgba(27, 73, 191, 0.15);
+    }
+
+    .elc-badge {
+        position: absolute;
+        top: 25px;
+        background: var(--elc-card-bg);
+        backdrop-filter: blur(12px);
+        padding: 20px 24px;
+        border-radius: 16px;
+        max-width: 250px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .left .elc-badge {
+        left: -25px;
+    }
+
+    .right .elc-badge {
+        right: -25px;
+    }
+
+    .elc-badge h3 {
+        margin: 0 0 6px 0;
+        font-size: 1.1rem;
+        color: var(--elc-text-dark);
+        font-weight: 700;
+    }
+
+    .elc-badge p {
+        margin: 0;
+        font-size: 0.85rem;
+        color: var(--elc-text-muted);
+        line-height: 1.45;
+    }
+
+    .elc-spacer {
+        flex: 1;
+    }
+
+    /* Adaptación Responsive */
+    @media (max-width: 768px) {
+
+        .elc-station,
+        .elc-station.right {
+            flex-direction: column;
+            margin-bottom: 90px;
+        }
+
+        .elc-media-wrapper {
+            max-width: 100%;
+        }
+
+        .left .elc-badge,
+        .right .elc-badge {
+            position: relative;
+            left: 0;
+            right: 0;
+            top: -35px;
+            margin: 0 auto -25px auto;
+            max-width: 90%;
+        }
+
+        .elc-svg-wrapper,
+        .elc-deco-icon {
+            display: none;
+        }
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const path = document.getElementById("elcPathActive");
+        if (path) {
+            const pathLength = path.getTotalLength();
+            path.style.strokeDasharray = pathLength;
+            path.style.strokeDashoffset = pathLength;
+
+            // Revelado dinámico del trazado grueso según el avance del scroll
+            gsap.to(path, {
+                strokeDashoffset: 0,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#elcTour",
+                    start: "top 60%",
+                    end: "bottom 85%",
+                    scrub: 1.2
+                }
+            });
+        }
+
+        // Animación de aparición de estaciones
+        const stations = document.querySelectorAll(".elc-station");
+        stations.forEach((station) => {
+            ScrollTrigger.create({
+                trigger: station,
+                start: "top 78%",
+                onEnter: () => station.classList.add("is-visible")
+            });
+        });
+    });
+</script>
