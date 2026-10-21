@@ -1,0 +1,507 @@
+<!---
+ * @license ELC TEST INGLES Widget v2.2
+ * (c) 2026 Selena Ehagaraz. All rights reserved.
+ * Modification and redistribution without permission are strictly prohibited.
+--->
+
+<div id="elc-quiz-container" class="elc-quiz-card">
+    <div class="elc-quiz-header">
+        <span class="elc-badge">Test de Nivelación</span>
+        <h2>Test de Nivel de Inglés</h2>
+        <p>Responde 12 preguntas para evaluar tu nivel y orientarte sobre la mejor opción para ti.</p>
+    </div>
+
+    <div class="elc-progress-bar">
+        <div id="elc-progress" class="elc-progress-fill"></div>
+    </div>
+
+    <form id="elc-quiz-form">
+        <!-- Pregunta 1 -->
+        <div class="elc-step active" data-step="1">
+            <p class="elc-question-number">Pregunta 1 de 12</p>
+            <h3 class="elc-question-title">1. She ____ swimming at all.</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q1" value="0" onchange="autoAdvance(1)"> <span>isn't
+                        like</span></label>
+                <label class="elc-option"><input type="radio" name="q1" value="1" onchange="autoAdvance(1)">
+                    <span>doesn't like</span></label>
+                <label class="elc-option"><input type="radio" name="q1" value="0" onchange="autoAdvance(1)"> <span>don't
+                        like</span></label>
+                <label class="elc-option"><input type="radio" name="q1" value="0" onchange="autoAdvance(1)"> <span>don't
+                        likes</span></label>
+            </div>
+            <div class="elc-actions"></div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="elc-step" data-step="2">
+            <p class="elc-question-number">Pregunta 2 de 12</p>
+            <h3 class="elc-question-title">2. There ____ chairs in the room. It's empty.</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q2" value="0" onchange="autoAdvance(2)"> <span>isn't
+                        any</span></label>
+                <label class="elc-option"><input type="radio" name="q2" value="0" onchange="autoAdvance(2)">
+                    <span>aren't many</span></label>
+                <label class="elc-option"><input type="radio" name="q2" value="1" onchange="autoAdvance(2)">
+                    <span>aren't any</span></label>
+                <label class="elc-option"><input type="radio" name="q2" value="0" onchange="autoAdvance(2)">
+                    <span>aren't some</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(2)">← Atrás</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="elc-step" data-step="3">
+            <p class="elc-question-number">Pregunta 3 de 12</p>
+            <h3 class="elc-question-title">3. Some of my friends ____ to my birthday last night.</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q3" value="0" onchange="autoAdvance(3)">
+                    <span>weren't</span></label>
+                <label class="elc-option"><input type="radio" name="q3" value="0" onchange="autoAdvance(3)">
+                    <span>didn't went</span></label>
+                <label class="elc-option"><input type="radio" name="q3" value="0" onchange="autoAdvance(3)">
+                    <span>wasn't go</span></label>
+                <label class="elc-option"><input type="radio" name="q3" value="1" onchange="autoAdvance(3)">
+                    <span>didn't go</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(3)">← Atrás</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="elc-step" data-step="4">
+            <p class="elc-question-number">Pregunta 4 de 12</p>
+            <h3 class="elc-question-title">4. Shhhh! My dad ____ an important report.</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q4" value="1" onchange="autoAdvance(4)"> <span>is
+                        reading</span></label>
+                <label class="elc-option"><input type="radio" name="q4" value="0" onchange="autoAdvance(4)">
+                    <span>reads</span></label>
+                <label class="elc-option"><input type="radio" name="q4" value="0" onchange="autoAdvance(4)"> <span>was
+                        reading</span></label>
+                <label class="elc-option"><input type="radio" name="q4" value="0" onchange="autoAdvance(4)"> <span>are
+                        reading</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(4)">← Atrás</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="elc-step" data-step="5">
+            <p class="elc-question-number">Pregunta 5 de 12</p>
+            <h3 class="elc-question-title">5. Have you ever ____ a poem?</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q5" value="0" onchange="autoAdvance(5)">
+                    <span>been</span></label>
+                <label class="elc-option"><input type="radio" name="q5" value="1" onchange="autoAdvance(5)">
+                    <span>written</span></label>
+                <label class="elc-option"><input type="radio" name="q5" value="0" onchange="autoAdvance(5)">
+                    <span>wrote</span></label>
+                <label class="elc-option"><input type="radio" name="q5" value="0" onchange="autoAdvance(5)">
+                    <span>writing</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(5)">← Atrás</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 6 -->
+        <div class="elc-step" data-step="6">
+            <p class="elc-question-number">Pregunta 6 de 12</p>
+            <h3 class="elc-question-title">6. ____ is that man over there? Is he the new boss?</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q6" value="0" onchange="autoAdvance(6)">
+                    <span>When</span></label>
+                <label class="elc-option"><input type="radio" name="q6" value="0" onchange="autoAdvance(6)">
+                    <span>Whom</span></label>
+                <label class="elc-option"><input type="radio" name="q6" value="0" onchange="autoAdvance(6)">
+                    <span>Which</span></label>
+                <label class="elc-option"><input type="radio" name="q6" value="1" onchange="autoAdvance(6)">
+                    <span>Who</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(6)">← Atrás</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 7 -->
+        <div class="elc-step" data-step="7">
+            <p class="elc-question-number">Pregunta 7 de 12</p>
+            <h3 class="elc-question-title">7. What ____ you do if the train gets late?</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q7" value="1" onchange="autoAdvance(7)">
+                    <span>will</span></label>
+                <label class="elc-option"><input type="radio" name="q7" value="0" onchange="autoAdvance(7)">
+                    <span>did</span></label>
+                <label class="elc-option"><input type="radio" name="q7" value="0" onchange="autoAdvance(7)">
+                    <span>are</span></label>
+                <label class="elc-option"><input type="radio" name="q7" value="0" onchange="autoAdvance(7)">
+                    <span>would</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(7)">← Atrás</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 8 -->
+        <div class="elc-step" data-step="8">
+            <p class="elc-question-number">Pregunta 8 de 12</p>
+            <h3 class="elc-question-title">8. How ____ do you practise hockey?</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q8" value="0" onchange="autoAdvance(8)">
+                    <span>old</span></label>
+                <label class="elc-option"><input type="radio" name="q8" value="0" onchange="autoAdvance(8)">
+                    <span>many</span></label>
+                <label class="elc-option"><input type="radio" name="q8" value="1" onchange="autoAdvance(8)">
+                    <span>often</span></label>
+                <label class="elc-option"><input type="radio" name="q8" value="0" onchange="autoAdvance(8)">
+                    <span>time</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(8)">← Atrás</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 9 -->
+        <div class="elc-step" data-step="9">
+            <p class="elc-question-number">Pregunta 9 de 12</p>
+            <h3 class="elc-question-title">9. This wine ____ made in Spain. It's from Majorca.</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q9" value="1" onchange="autoAdvance(9)">
+                    <span>is</span></label>
+                <label class="elc-option"><input type="radio" name="q9" value="0" onchange="autoAdvance(9)">
+                    <span>were</span></label>
+                <label class="elc-option"><input type="radio" name="q9" value="0" onchange="autoAdvance(9)">
+                    <span>being</span></label>
+                <label class="elc-option"><input type="radio" name="q9" value="0" onchange="autoAdvance(9)">
+                    <span>are</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(9)">← Atrás</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 10 -->
+        <div class="elc-step" data-step="10">
+            <p class="elc-question-number">Pregunta 10 de 12</p>
+            <h3 class="elc-question-title">10. What would you do today if you ____ younger?</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q10" value="0" onchange="autoAdvance(10)">
+                    <span>are</span></label>
+                <label class="elc-option"><input type="radio" name="q10" value="0" onchange="autoAdvance(10)"> <span>had
+                        been</span></label>
+                <label class="elc-option"><input type="radio" name="q10" value="0" onchange="autoAdvance(10)">
+                    <span>would be</span></label>
+                <label class="elc-option"><input type="radio" name="q10" value="1" onchange="autoAdvance(10)">
+                    <span>were</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(10)">← Atrás</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 11 -->
+        <div class="elc-step" data-step="11">
+            <p class="elc-question-number">Pregunta 11 de 12</p>
+            <h3 class="elc-question-title">11. She told me she ____ buy a new car.</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q11" value="1" onchange="autoAdvance(11)">
+                    <span>would</span></label>
+                <label class="elc-option"><input type="radio" name="q11" value="0" onchange="autoAdvance(11)">
+                    <span>will</span></label>
+                <label class="elc-option"><input type="radio" name="q11" value="0" onchange="autoAdvance(11)"> <span>is
+                        going to</span></label>
+                <label class="elc-option"><input type="radio" name="q11" value="0" onchange="autoAdvance(11)">
+                    <span>must</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(11)">← Atrás</button>
+            </div>
+        </div>
+
+        <!-- Pregunta 12 -->
+        <div class="elc-step" data-step="12">
+            <p class="elc-question-number">Pregunta 12 de 12</p>
+            <h3 class="elc-question-title">12. They asked me ____</h3>
+            <div class="elc-options">
+                <label class="elc-option"><input type="radio" name="q12" value="0" onchange="enableSubmit()"> <span>if
+                        didn't I know her address.</span></label>
+                <label class="elc-option"><input type="radio" name="q12" value="0" onchange="enableSubmit()">
+                    <span>where did I go.</span></label>
+                <label class="elc-option"><input type="radio" name="q12" value="1" onchange="enableSubmit()">
+                    <span>whether I had her address.</span></label>
+                <label class="elc-option"><input type="radio" name="q12" value="0" onchange="enableSubmit()"> <span>if I
+                        have her address.</span></label>
+            </div>
+            <div class="elc-actions">
+                <button type="button" class="elc-btn-secondary" onclick="prevStep(12)">← Atrás</button>
+                <button type="button" id="btn-submit" class="elc-btn elc-btn-submit" onclick="finalizarQuiz()"
+                    disabled>Finalizar y Consultar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    .elc-quiz-card {
+        max-width: 580px;
+        margin: 40px auto;
+        padding: 32px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        border: 1px solid #f0f4f8;
+        font-family: system-ui, -apple-system, sans-serif;
+        box-sizing: border-box;
+    }
+
+    .elc-quiz-header {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .elc-badge {
+        background: #e0edff;
+        color: #3b82f6;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .elc-quiz-header h2 {
+        color: #1e293b;
+        font-size: 1.6rem;
+        margin: 12px 0 6px 0;
+        font-weight: 700;
+    }
+
+    .elc-quiz-header p {
+        color: #64748b;
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    .elc-progress-bar {
+        width: 100%;
+        height: 6px;
+        background: #e2e8f0;
+        border-radius: 10px;
+        margin-bottom: 28px;
+        overflow: hidden;
+    }
+
+    .elc-progress-fill {
+        height: 100%;
+        width: 8.33%;
+        /* Inicializado para 1/12 */
+        background: #8bb5ee;
+        transition: width 0.4s ease;
+    }
+
+    .elc-step {
+        display: none;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+    }
+
+    .elc-step.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .elc-question-number {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .elc-question-title {
+        color: #1e293b;
+        font-size: 1.15rem;
+        margin: 0 0 20px 0;
+        line-height: 1.4;
+    }
+
+    .elc-options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .elc-option {
+        display: flex;
+        align-items: center;
+        padding: 14px 18px;
+        border: 2px solid #e2e8f0;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: #fff;
+        font-weight: 500;
+        color: #334155;
+    }
+
+    .elc-option:hover {
+        border-color: #8bb5ee;
+        background: #f8fafc;
+    }
+
+    .elc-option input[type="radio"] {
+        margin-right: 14px;
+        width: 18px;
+        height: 18px;
+        accent-color: #8bb5ee;
+    }
+
+    .elc-option:has(input[type="radio"]:checked) {
+        border-color: #8bb5ee;
+        background-color: #f0f6ff;
+        color: #1e3a8a;
+    }
+
+    .elc-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 28px;
+        gap: 12px;
+    }
+
+    .elc-btn {
+        background: #8bb5ee;
+        color: #ffffff;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.1s ease;
+        margin-left: auto;
+    }
+
+    .elc-btn:hover {
+        background: #76a3e3;
+        transform: translateY(-1px);
+    }
+
+    .elc-btn-secondary {
+        background: #f1f5f9;
+        color: #64748b;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    .elc-btn-secondary:hover {
+        background: #e2e8f0;
+    }
+
+    .elc-btn-submit {
+        background: #25d366;
+    }
+
+    .elc-btn-submit:hover {
+        background: #20bd5a;
+    }
+
+    .elc-btn-submit:disabled {
+        background: #cbd5e1;
+        cursor: not-allowed;
+    }
+</style>
+<script>const TOTAL_QUESTIONS = 12;
+
+    function updateProgress(step) {
+        const progress = document.getElementById('elc-progress');
+        const percentage = (step / TOTAL_QUESTIONS) * 100;
+        progress.style.width = percentage + '%';
+    }
+
+    function autoAdvance(currentStep) {
+        setTimeout(() => {
+            const form = document.getElementById('elc-quiz-form');
+            const currentElem = form.querySelector(`.elc-step[data-step="${currentStep}"]`);
+            const nextElem = form.querySelector(`.elc-step[data-step="${currentStep + 1}"]`);
+
+            if (nextElem) {
+                currentElem.classList.remove('active');
+                setTimeout(() => {
+                    nextElem.classList.add('active');
+                    updateProgress(currentStep + 1);
+                }, 150);
+            }
+        }, 250);
+    }
+
+    function prevStep(currentStep) {
+        const form = document.getElementById('elc-quiz-form');
+        const currentElem = form.querySelector(`.elc-step[data-step="${currentStep}"]`);
+        const prevElem = form.querySelector(`.elc-step[data-step="${currentStep - 1}"]`);
+
+        if (prevElem) {
+            currentElem.classList.remove('active');
+            setTimeout(() => {
+                prevElem.classList.add('active');
+                updateProgress(currentStep - 1);
+            }, 150);
+        }
+    }
+
+    function enableSubmit() {
+        const btnSubmit = document.getElementById('btn-submit');
+        btnSubmit.disabled = false;
+    }
+
+    function finalizarQuiz() {
+        const form = document.getElementById('elc-quiz-form');
+        let score = 0;
+        let allAnswered = true;
+
+        for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+            const q = form.querySelector(`input[name="q${i}"]:checked`);
+            if (!q) {
+                allAnswered = false;
+                break;
+            }
+            score += parseInt(q.value);
+        }
+
+        if (!allAnswered) {
+            alert("Por favor responde todas las preguntas del test.");
+            return;
+        }
+
+        // Evaluación de nivel en base a 12 puntos
+        let nivel = "";
+        if (score <= 3) {
+            nivel = "Principiante (A1)";
+        } else if (score <= 6) {
+            nivel = "Elemental / Pre-Intermedio (A2)";
+        } else if (score <= 9) {
+            nivel = "Intermedio (B1)";
+        } else if (score <= 11) {
+            nivel = "Intermedio Alto (B2)";
+        } else {
+            nivel = "Avanzado (C1/C2)";
+        }
+
+        const telefono = "5492364540178";
+        const mensaje = encodeURIComponent(
+            `¡Hola! Hice el test de nivel en la web y mi resultado fue: ${score}/${TOTAL_QUESTIONS} aciertos - Nivel: ${nivel}. Me gustaría recibir información sobre los cursos.`
+        );
+
+        window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+    }</script>
