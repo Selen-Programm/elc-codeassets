@@ -451,11 +451,17 @@
 
     function toggleELCChat() {
         widgetWrapper.classList.toggle('active');
-
+        // Avisarle a WordPress que cambie el tamaño del contenedor del iframe
+        if (widgetWrapper.classList.contains('active')) {
+            window.parent.postMessage('chat-opened', '*');
+        } else {
+            window.parent.postMessage('chat-closed', '*');
+        }
         if (!isInitialized) {
             initChat();
             isInitialized = true;
         }
+
     }
 
     function initChat() {
