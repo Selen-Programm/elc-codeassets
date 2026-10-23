@@ -22,14 +22,17 @@
 
         font-family: var(--font-main);
         position: fixed;
-        /* FIJO EN LA PANTALLA */
         bottom: 25px;
         right: 25px;
         z-index: 999999;
-        /* SIEMPRE ARRIBA DE TODO */
+        
+        /* IMPORTANTE: Hace que el contenedor general sea "invisible" a los clics, permitiendo clickear lo que está debajo */
+        pointer-events: none;
     }
 
+    /* Permitir clics específicamente en el botón flotante */
     .elc-chat-trigger {
+        pointer-events: auto;
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -69,6 +72,8 @@
     }
 
     .elc-chat-window {
+        /* Por defecto desactivamos los clics en la ventana cuando está oculta */
+        pointer-events: none;
         position: absolute;
         bottom: 75px;
         right: 0;
@@ -91,6 +96,8 @@
         opacity: 1;
         visibility: visible;
         transform: translateY(0) scale(1);
+        /* IMPORTANTE: Cuando el chat se abre, habilitamos los clics dentro de la ventana del chat */
+        pointer-events: auto;
     }
 
     .elc-widget-wrapper.active .elc-chat-trigger {
@@ -201,7 +208,6 @@
             opacity: 0;
             transform: scale(0.9) translateY(8px);
         }
-
         to {
             opacity: 1;
             transform: scale(1) translateY(0);
@@ -286,13 +292,9 @@
     }
 
     @keyframes bounce {
-
-        0%,
-        80%,
-        100% {
+        0%, 80%, 100% {
             transform: scale(0);
         }
-
         40% {
             transform: scale(1);
         }
@@ -320,7 +322,6 @@
         }
     }
 </style>
-
 
 <div class="elc-widget-wrapper" id="elcWidget">
     <button class="elc-chat-trigger" id="elcTrigger" onclick="toggleELCChat()" aria-label="Abrir Preguntas Frecuentes">
@@ -372,25 +373,25 @@
         cat_tiempos: {
             message: "Perfecto. Selecciona la pregunta específica sobre edades o duración del aprendizaje:",
             options: [
-                { label: "1. ¿Cuántos años lleva aprender inglés?", target: "q1" },
-                { label: "2. ¿A qué edad conviene mandar a un niño?", target: "q2" },
-                { label: "3. ¿Los adultos pueden aprender de cero?", target: "q3" },
+                { label: "¿Cuántos años lleva aprender inglés?", target: "q1" },
+                { label: "¿A qué edad conviene mandar a un niño?", target: "q2" },
+                { label: "¿Los adultos pueden aprender de cero?", target: "q3" },
                 { label: "⬅️ Volver al menú principal", target: "main" }
             ]
         },
         cat_elc: {
             message: "Te contamos lo que nos distingue. ¿Qué consulta deseas hacer?",
             options: [
-                { label: "4. ¿Por qué debo elegir ELC para mi hijo/a?", target: "q4" },
-                { label: "5. ¿Por qué ir a ELC puede ser mejor que otros centros?", target: "q5" },
+                { label: "¿Por qué debo elegir ELC para mi hijo/a?", target: "q4" },
+                { label: "¿Por qué ir a ELC puede ser mejor que otros centros?", target: "q5" },
                 { label: "⬅️ Volver al menú principal", target: "main" }
             ]
         },
         cat_virtual: {
             message: "Sobre nuestra modalidad online y herramientas digitales:",
             options: [
-                { label: "7. ¿Por qué elegir ELC para aprender virtual?", target: "q7" },
-                { label: "8. ¿La plataforma virtual es también para clases presenciales?", target: "q8" },
+                { label: "¿Por qué elegir ELC para aprender virtual?", target: "q7" },
+                { label: "¿La plataforma virtual es también para clases presenciales?", target: "q8" },
                 { label: "⬅️ Volver al menú principal", target: "main" }
             ]
         },
